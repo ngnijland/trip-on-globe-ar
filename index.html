@@ -187,12 +187,14 @@
           color: "white",
           ...(point.type === "flight"
             ? {
-                dashLength: Math.random(),
-                dashGap: Math.random(),
+                dashLength: 0.1,
+                dashGap: 0.05,
+                initialGap: 0,
               }
             : {
                 dashLength: 1,
                 dashGap: 0,
+                initialGap: 0.1,
               }),
         },
       ];
@@ -207,6 +209,7 @@
       .arcColor("color")
       .arcDashLength("dashLength")
       .arcDashGap("dashGap")
+      .arcDashInitialGap("initialGap")
       .arcDashAnimateTime(() => Math.random() * 4000 + 500)
       .pointColor("color")(document.getElementById("globeViz"));
   </script>

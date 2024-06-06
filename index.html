@@ -157,16 +157,6 @@
       },
     ];
 
-    const arcsData = [
-      {
-        startLat: 52.311118939864706,
-        startLng: 4.760423020898816,
-        endLat: 31.623554566186442,
-        endLng: -7.988264306025403,
-        color: "white",
-      },
-    ];
-
     const formattedPathsData = pathsDataRaw.map((point) => [
       point.lat,
       point.lng,
@@ -181,12 +171,28 @@
       return [...acc, [point, [nextPoint.lat, nextPoint.lng, nextPoint.alt]]];
     }, []);
 
+    const arcsData = pathsDataRaw.reduce((acc, point, index) => {
+      const nextPoint = pathsDataRaw[index + 1];
+
+      if (!nextPoint) return acc;
+
+      return [
+        ...acc,
+        {
+          startLat: point.lat,
+          startLng: point.lng,
+          endLat: nextPoint.lat,
+          endLng: nextPoint.lng,
+          color: "white",
+        },
+      ];
+    }, []);
+
     GlobeAR()
       .globeImageUrl(
         "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       )
       .pointsData(pointsData)
-      .pathsData(pathsData)
       .arcsData(arcsData)
       .arcDashAnimateTime(2000)
       .pointColor("color")(document.getElementById("globeViz"));

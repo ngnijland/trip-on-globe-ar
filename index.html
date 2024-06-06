@@ -17,16 +17,83 @@
 
   <script>
     // Gen random data
-    const N = 300;
-    const gData = [...Array(N).keys()].map(() => ({
-      lat: (Math.random() - 0.5) * 180,
-      lng: (Math.random() - 0.5) * 360,
-      size: Math.random() / 3,
-      color: ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
-    }));
+    const gData = [
+      {
+        lat: 52.311118939864706,
+        lon: 4.760423020898816,
+        color: "white",
+      },
+      {
+        lat: 31.623554566186442,
+        lon: -7.988264306025403,
+        color: "white",
+      },
+      {
+        lat: 31.623654653312077,
+        lon: -7.988314194720977,
+        color: "white",
+      },
+      {
+        lat: 31.62373914962787,
+        lon: -7.988299496004847,
+        color: "white",
+      },
+      {
+        lat: 33.60405905772361,
+        lon: -7.627879635279826,
+        color: "white",
+      },
+      {
+        lat: 33.95271355923907,
+        lon: -5.037680462416368,
+        color: "white",
+      },
+      {
+        lat: 34.06075340541769,
+        lon: -4.980216641406406,
+        color: "white",
+      },
+      {
+        lat: 31.111560849252726,
+        lon: -4.005588848145769,
+        color: "white",
+      },
+      {
+        lat: 31.10787421062529,
+        lon: -3.944994889581251,
+        color: "white",
+      },
+      {
+        lat: 31.495653707800205,
+        lon: -5.45530962606878,
+        color: "white",
+      },
+      {
+        lat: 31.566757856837352,
+        lon: -5.57888985396634,
+        color: "white",
+      },
+      {
+        lat: 31.04229722578699,
+        lon: -7.129885417308053,
+        color: "white",
+      },
+      {
+        lat: 30.545903893019705,
+        lon: -9.707652142101157,
+        color: "white",
+      },
+      {
+        lat: 31.602286383541664,
+        lon: -8.024514453612897,
+        color: "white",
+      },
+    ];
 
     GlobeAR()
-      .globeImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+      .globeImageUrl(
+        "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+      )
       .pointsData(gData)
       .pointAltitude("size")
       .pointColor("color")(document.getElementById("globeViz"));

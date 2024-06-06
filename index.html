@@ -190,7 +190,10 @@
                 dashLength: Math.random(),
                 dashGap: Math.random(),
               }
-            : {}),
+            : {
+                dashLength: 1,
+                dashGap: 0,
+              }),
         },
       ];
     }, []);
@@ -202,6 +205,8 @@
       .pointsData(pointsData)
       .arcsData(arcsData)
       .arcColor("color")
+      .arcDashLength("dashLength")
+      .arcDashGap("dashGap")
       .arcDashAnimateTime(() => Math.random() * 4000 + 500)
       .pointColor("color")(document.getElementById("globeViz"));
   </script>

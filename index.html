@@ -17,7 +17,7 @@
 
   <script>
     // Gen random data
-    const gData = [
+    const pointsData = [
       {
         lat: 52.311118939864706,
         lng: 4.760423020898816,
@@ -90,12 +90,93 @@
       },
     ];
 
+    const pathsDataRaw = [
+      {
+        lat: 31.623554566186442,
+        lng: -7.988264306025403,
+        alt: 0.001,
+      },
+      {
+        lat: 31.623654653312077,
+        lng: -7.988314194720977,
+        alt: 0.001,
+      },
+      {
+        lat: 31.62373914962787,
+        lng: -7.988299496004847,
+        alt: 0.001,
+      },
+      {
+        lat: 33.60405905772361,
+        lng: -7.627879635279826,
+        alt: 0.001,
+      },
+      {
+        lat: 33.95271355923907,
+        lng: -5.037680462416368,
+        alt: 0.001,
+      },
+      {
+        lat: 34.06075340541769,
+        lng: -4.980216641406406,
+      },
+      {
+        lat: 31.111560849252726,
+        lng: -4.005588848145769,
+        alt: 0.001,
+      },
+      {
+        lat: 31.10787421062529,
+        lng: -3.944994889581251,
+        alt: 0.001,
+      },
+      {
+        lat: 31.495653707800205,
+        lng: -5.45530962606878,
+        alt: 0.001,
+      },
+      {
+        lat: 31.566757856837352,
+        lng: -5.57888985396634,
+        alt: 0.001,
+      },
+      {
+        lat: 31.04229722578699,
+        lng: -7.129885417308053,
+        alt: 0.001,
+      },
+      {
+        lat: 30.545903893019705,
+        lng: -9.707652142101157,
+        alt: 0.001,
+      },
+      {
+        lat: 31.602286383541664,
+        lng: -8.024514453612897,
+        alt: 0.001,
+      },
+    ];
+
+    const formattedPathsData = pathsDataRaw.map((point) => [
+      point.lat,
+      point.lng,
+      point.alt,
+    ]);
+
+    const pathsData = formattedPathsData.reduce((acc, point, index) => {
+      const nextPoint = pathsDataRaw[index + 1];
+
+      if (!nextPoint) return acc;
+
+      return [...acc, [point, [nextPoint.lat, nextPoint.lng, nextPoint.alt]]];
+    }, []);
+
     GlobeAR()
       .globeImageUrl(
         "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       )
-      .pointsData(gData)
-      .pointAltitude(0.1)
+      .pointsData(pointsData)
+      .pathsData(pathsData)
       .pointColor("color")(document.getElementById("globeViz"));
   </script>
 </body>

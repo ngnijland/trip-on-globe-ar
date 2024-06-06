@@ -205,12 +205,13 @@
         "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       )
       .pointsData(pointsData)
+      .pointAltitude(0.025)
       .arcsData(arcsData)
       .arcColor("color")
       .arcDashLength("dashLength")
       .arcDashGap("dashGap")
       .arcDashInitialGap("initialGap")
-      .arcDashAnimateTime(() => Math.random() * 4000 + 500)
+      .arcDashAnimateTime(3000)
       .pointColor("color")(document.getElementById("globeViz"));
   </script>
 </body>

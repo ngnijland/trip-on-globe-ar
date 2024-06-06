@@ -189,12 +189,10 @@
             ? {
                 dashLength: 0.1,
                 dashGap: 0.05,
-                initialGap: 0,
               }
             : {
                 dashLength: 1,
                 dashGap: 0,
-                initialGap: 0.1,
               }),
         },
       ];
@@ -210,7 +208,6 @@
       .arcColor("color")
       .arcDashLength("dashLength")
       .arcDashGap("dashGap")
-      .arcDashInitialGap("initialGap")
       .arcDashAnimateTime(3000)
       .pointColor("color")(document.getElementById("globeViz"));
   </script>
